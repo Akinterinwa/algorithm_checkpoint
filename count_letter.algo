@@ -1,0 +1,32 @@
+ALGORITHM readSentence
+VAR
+
+    wordLength: INTEGER := 0;
+    wordCount: INTEGER := 0;
+    vowelCount: INTEGER := 0;
+
+BEGIN
+    FUNCTION analyzeSentence(sentence) :STRING
+    VAR
+        vowels = ("AEIOUaeiou")
+    BEGIN
+        FOR character OF sentence  DO
+            wordLength++
+        END_FOR
+
+
+        IF (character.match(/[a-zA-Z]/)) THEN
+            set_instructions
+        ELSE_IF (wordLength := 1; OR sentence[wordLength - 2].match(/[a-zA-Z]/)) THEN
+            wordCount++
+        ELSE_IF (vowels.has(character)) THEN
+        vowelCount++
+
+        Write(wordLength);
+        Write(wordCount);
+        Write(vowelCount);
+        END_IF
+    END
+    inputSentence:= STRING;
+    analyzeSentence := inputSentence;
+END 
