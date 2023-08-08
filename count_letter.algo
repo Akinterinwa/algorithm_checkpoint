@@ -1,32 +1,27 @@
 ALGORITHM readSentence
+
 VAR
 
-    wordLength: INTEGER := 0;
-    wordCount: INTEGER := 0;
-    vowelCount: INTEGER := 0;
+    wordLength,wordCount,vowelCount: INTEGER;   // declearing the varables
+    vowels: ARRAY_OF type[STRING]:= ["A,E,I,O,U,a,e,i,o,u"]  // variable for vowels
 
-BEGIN
-    FUNCTION analyzeSentence(sentence) :STRING
-    VAR
-        vowels = ("AEIOUaeiou")
     BEGIN
-        FOR character OF sentence  DO
+        ch: CHAR;
+        wordLength:=0;
+        wordCount:=0;
+        vowelCount:=0;
+
+        IF (ch.match(/[a-zA-Z]/)) THEN   // counts the wordlenght if it match a-z
             wordLength++
-        END_FOR
-
-
-        IF (character.match(/[a-zA-Z]/)) THEN
-            set_instructions
         ELSE_IF (wordLength := 1; OR sentence[wordLength - 2].match(/[a-zA-Z]/)) THEN
-            wordCount++
-        ELSE_IF (vowels.has(character)) THEN
-        vowelCount++
+            wordCount++                         // if the initial w0rd is containing a-z then wordcount
+        ELSE_IF (vowels.has(ch)) THEN
+        vowelCount++                           // increases the vowel count if it contains a,e,i,o,u
 
         Write(wordLength);
         Write(wordCount);
         Write(vowelCount);
         END_IF
+
     END
-    inputSentence:= STRING;
-    analyzeSentence := inputSentence;
 END 
